@@ -80,10 +80,11 @@ module Guard
 
         paths.each { |path| cmd_parts << "\"./#{path}\"" }
 
-        unless drb? || zeus?
-          cmd_parts << '--use-color'
-          cmd_parts << '--runner=guard'
-        end
+        # Monkey patch for mintest 4.2 compatibility (these options are not supported)
+        #unless drb? || zeus?
+        #  cmd_parts << '--use-color'
+        #  cmd_parts << '--runner=guard'
+        #end
 
         cmd_parts << @options[:cli]
 
